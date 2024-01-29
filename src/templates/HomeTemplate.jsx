@@ -4,6 +4,10 @@ import { Outlet } from 'react-router-dom'
 
 //Home template dùng để định nghĩa các thành phần dùng chung của các page 
 export default class HomeTemplate extends Component {
+
+
+
+
   render() {
     return (
       <>
