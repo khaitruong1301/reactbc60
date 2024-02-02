@@ -25,13 +25,15 @@ export default class Header extends Component {
                         <li className="nav-item">
                             <NavLink className={({isActive}) => isActive ? 'nav-link bg-light text-dark' : 'nav-link'} style={({isActive})=> isActive ? {border:'1px solid orange'} : {} }  to="/lifecycle">React-Lifecycle</NavLink>
                         </li>
-                        {/* <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redux</a>
                             <div className="dropdown-menu" aria-labelledby="dropdownId">
-                                <a className="dropdown-item" href="#">Action 1</a>
-                                <a className="dropdown-item" href="#">Action 2</a>
+                                <NavLink className="dropdown-item" to="/redux-number">Change number</NavLink>
+                                <NavLink className="dropdown-item" to="/redux-font-size">Change font size</NavLink>
+                                <NavLink className="dropdown-item" to="/redux-change-color">Change color</NavLink>
+                                <NavLink className="dropdown-item" to="/redux-shopping-carts">Shopping Carts</NavLink>
                             </div>
-                        </li> */}
+                        </li>
                     </ul>
                     <form className="d-flex my-2 my-lg-0">
                         <input className="form-control me-sm-2" type="text" placeholder="Search" />

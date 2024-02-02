@@ -17,6 +17,10 @@ import ReactLifeCycle from './pages/ReactLifeCycle/ReactLifeCycle';
 //setup redux
 import {Provider} from 'react-redux'
 import {store} from './redux/store'
+import ChangeNumber from './pages/redux_demo/ChangeNumber';
+import ChangeFont from './pages/redux_demo/ChangeFont';
+import ChangeCarColor from './pages/redux_demo/ChangeCarColor';
+import Shopping_Carts from './pages/redux_demo/Shopping_Carts/Shopping_Carts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,6 +36,11 @@ root.render(
           <Route path='register' element={<Register />}></Route>
           <Route path='profile' element={<Profile />}></Route>
           <Route path='lifecycle' element={<ReactLifeCycle />}></Route>
+          <Route path='redux-number' element={<ChangeNumber />}></Route>
+          <Route path='redux-font-size' element={<ChangeFont />}></Route>
+          <Route path='redux-change-color' element={<ChangeCarColor />}></Route>
+          <Route path='redux-shopping-carts' element={<Shopping_Carts />}></Route>
+
           <Route path='*' element={<Navigate to="/" />}></Route>
         </Route>
 
