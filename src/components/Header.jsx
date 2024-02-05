@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-
-export default class Header extends Component {
+import {connect} from 'react-redux'
+class Header extends Component {
 
 
     
@@ -36,15 +36,20 @@ export default class Header extends Component {
                         </li>
                     </ul>
                     <form className="d-flex my-2 my-lg-0">
-                        <input className="form-control me-sm-2" type="text" placeholder="Search" />
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                            Search
-                        </button>
+                        
+                        <NavLink to="/redux-cart" className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <i className='fa fa-cart-plus'></i> ({this.props.arrProductCart.reduce((total,prod)=>{
+                                return total += prod.quantity
+                            },0)})
+                        </NavLink>
                     </form>
                 </div>
             </nav>
-
-
         )
     }
 }
+
+const mapStateToProps = (state)=>({
+    arrProductCart: state.stateCart.arrProductCart
+})
+export default connect(mapStateToProps)(Header)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Cart_Page from '../../Cart_Page'
 
 class Cart extends Component {
 
@@ -10,6 +11,17 @@ class Cart extends Component {
     }
     return total
   }
+  renderTotalAll =() => {
+    // let totalAll = 0
+    // for(let prod of this.props.stateCart){
+    //   totalAll += prod.quantity * prod.price
+    // }
+    // return totalAll
+
+    return this.props.stateCart.reduce((total,prod)=>{ 
+      return total + prod.price * prod.quantity
+    }, 0).toLocaleString()
+  }
 
   render() {
     console.log(this.props)
@@ -18,7 +30,7 @@ class Cart extends Component {
       <div>
         {/* Modal trigger button */}
         <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
-          <i className='fa fa-cart-plus'></i> ({this.renderTotalQuantity()})
+          <i className='fa fa-cart-plus'></i> ({this.renderTotalQuantity()} - {this.renderTotalAll()})
         </button>
         {/* Modal Body */}
         {/* if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard */}
@@ -32,41 +44,11 @@ class Cart extends Component {
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
               </div>
               <div className="modal-body">
-                  {/* table gio hang  */}
-                  <table className='table'>
-                    <thead>
-                      <tr>
-                        <th>id</th>
-                        <th>image</th>
-                        <th>name</th>
-                        <th>price</th>
-                        <th>quantity</th>
-                        <th>total</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.props.stateCart.map((prdCart)=>{
-                        return <tr key={prdCart.id}>
-                        <td>{prdCart.id}</td>
-                        <td><img src={prdCart.image} alt="..." width={50} /></td>
-                        <td>{prdCart.name}</td>
-                        <td>{prdCart.price}</td>
-                        <td>
-                          <button className='mx-2 btn btn-dark'>+</button>
-                          {prdCart.quantity}
-                          <button className='mx-2 btn btn-dark'>-</button>
-                        </td>
-                        <td>{prdCart.price * prdCart.quantity}</td>
-                        <td>
-                          <button className='btn btn-danger'><i className='fa fa-trash' ></i></button>
-                        </td>
-                    </tr>
-                      })}
-                    </tbody>
-                  </table>
+                  <Cart_Page />
               </div>
-            
+              <div className='modal-footer text-end'>
+                  <span className='fz-1'>Total: {this.renderTotalAll()}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -78,7 +60,7 @@ class Cart extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  stateCart: state.stateCart
+  stateCart: state.stateCart.arrProductCart
 })
 
 

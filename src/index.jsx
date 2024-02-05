@@ -21,6 +21,7 @@ import ChangeNumber from './pages/redux_demo/ChangeNumber';
 import ChangeFont from './pages/redux_demo/ChangeFont';
 import ChangeCarColor from './pages/redux_demo/ChangeCarColor';
 import Shopping_Carts from './pages/redux_demo/Shopping_Carts/Shopping_Carts';
+import Cart_Page from './pages/Cart_Page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -40,7 +41,7 @@ root.render(
           <Route path='redux-font-size' element={<ChangeFont />}></Route>
           <Route path='redux-change-color' element={<ChangeCarColor />}></Route>
           <Route path='redux-shopping-carts' element={<Shopping_Carts />}></Route>
-
+          <Route path='redux-cart' element={<Cart_Page />}></Route>
           <Route path='*' element={<Navigate to="/" />}></Route>
         </Route>
 

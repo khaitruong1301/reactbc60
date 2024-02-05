@@ -1,37 +1,15 @@
 //Cấu hình store chứa các state của ứng dụng
 import {configureStore} from '@reduxjs/toolkit'
-
+import _ from 'lodash'
+import { numberReducer } from './reducer/numberReducer'
+import { fontSizeReducer } from './reducer/fontSizeReducer'
+import { imageReducer } from './reducer/imageReducer'
+import cartReducer from './reducer/cartReducer'
 
 export const store = configureStore({
     reducer:{
-        stateNumber: (stateNumber = 100,action) => {
-            console.log('redux store')
-            if (action.type == 'DEPOSIT'){
-                stateNumber += action.payload;
-            }
-            return stateNumber 
-        },
-        stateFontSize:(state = 30,action) =>{
-            if (action.type === 'CHANGE_FONT_SIZE'){
-                state += action.payload
-            }
-            return state
-        },
-        stateImage: (state='./images/black-car.jpg',action) => {
-            if (action.type === 'CHANGE_COLOR'){
-                state = action.payload
-            }
-            return state
-        },
-        stateCart: (
-            state = [
-                {id:3,name:'meizu phone',image:'./images/meizuphone.jpg',price:3000,quantity:2}
-            ]
-        ) => {
-
-
-            return state
-        }
-    }
-})
-
+        stateNumber:numberReducer,
+        stateFontSize:fontSizeReducer,
+        stateImage:imageReducer,
+        stateCart: cartReducer
+}})
